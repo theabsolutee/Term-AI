@@ -42,15 +42,15 @@
     "jspdf": "https://esm.sh/jspdf@^3.0.4",
     "jspdf-autotable": "https://esm.sh/jspdf-autotable@^5.0.2",
     "@heroicons/react/": "https://esm.sh/@heroicons/react@^2.2.0/",
-    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2",
-    "vite": "https://esm.sh/vite@^7.3.0"
+    "vite": "https://esm.sh/vite@^7.3.0",
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2"
   }
 }
 </script>
 </head>
 <body class="antialiased transition-colors duration-300">
     <div id="root"></div>
-    <!-- This script tag is essential for Vite to find the entry point -->
+    <!-- Vite will process this entry point and bundle all dependencies from package.json -->
     <script type="module" src="./index.tsx"></script>
 </body>
 </html>
