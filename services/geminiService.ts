@@ -2,9 +2,14 @@
 import { GoogleGenAI, Type } from "@google/genai";
 import { AnalysisResult } from "../types";
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || '' });
-
 export async function analyzeStudyMaterial(base64Pdf: string, fileName: string): Promise<AnalysisResult> {
+  const apiKey = process.env.API_KEY;
+  
+  if (!apiKey) {
+    throw new Error("API Key is missing. Please configure it in your environment variables.");
+  }
+
+  const ai = new GoogleGenAI({ apiKey });
   const model = "gemini-3-flash-preview";
   
   const prompt = `Analyze this study material and extract all important definitions, technical terms, and concepts. 
@@ -55,7 +60,9 @@ export async function analyzeStudyMaterial(base64Pdf: string, fileName: string):
   });
 
   try {
-    const result = JSON.parse(response.text || '{}');
+    const text = response.text;
+    if (!text) throw new Error("Empty response from AI");
+    const result = JSON.parse(text);
     return result as AnalysisResult;
   } catch (error) {
     console.error("Failed to parse Gemini response:", error);

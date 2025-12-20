@@ -29,7 +29,6 @@
         h1, h2, h3, h4, .font-display {
             font-family: 'Outfit', sans-serif;
         }
-        /* Prevent layout shift before React hydration */
         #root { min-height: 100vh; }
     </style>
 <script type="importmap">
@@ -48,9 +47,8 @@
 }
 </script>
 </head>
-<body class="antialiased transition-colors duration-300">
+<body class="antialiased transition-colors duration-300 text-slate-900 dark:text-slate-100 bg-white dark:bg-slate-950">
     <div id="root"></div>
-    <!-- Vite will process this entry point and bundle all dependencies from package.json -->
     <script type="module" src="./index.tsx"></script>
 </body>
 </html>
